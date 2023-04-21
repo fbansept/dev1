@@ -1,0 +1,40 @@
+<div class="container">
+  <a mat-raised-button *ngIf="isAdmin">
+    <mat-icon fontIcon="add"></mat-icon>
+    Ajouter un article
+  </a>
+
+  <div class="row">
+    <div *ngFor="let article of listeArticle" class="col-6">
+      <mat-card class="mt-3" [class.promotion]="article.promotion > 0">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ article.nom }}</mat-card-title>
+          <mat-card-subtitle>
+            <span class="prix">{{ article.prix }}€</span>
+            <span *ngIf="article.promotion > 0" class="prix-promo">
+              -{{ article.promotion }}%
+            </span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{ article.urlImage }}" />
+        <mat-card-content>
+          <p>
+            {{ article.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">Acheter</button>
+          <button *ngIf="isAdmin" mat-button color="accent">
+            <mat-icon fontIcon="edit"></mat-icon>
+            Modifier
+          </button>
+          <button *ngIf="isAdmin" mat-button color="warn">
+            <mat-icon fontIcon="delete"></mat-icon>
+            Supprimer
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

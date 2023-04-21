@@ -1,0 +1,19 @@
+form {
+    display: flex;
+    flex-direction: column;
+
+    mat-form-field {
+        max-width: 500px;
+        min-width: 200px;
+        width: 100%;
+    }
+
+    .action-buttons {
+        display: flex;
+        
+        button, a {
+            margin-right: 2em;
+            width: 200px;
+        }
+    }
+}
