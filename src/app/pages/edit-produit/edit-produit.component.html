@@ -1,12 +1,12 @@
-<form class="container">
+<form class="container" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
   <mat-form-field appearance="fill">
     <mat-label>Nom</mat-label>
-    <input matInput />
+    <input matInput formControlName="nom"/>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
 
   <div class="action-buttons">
