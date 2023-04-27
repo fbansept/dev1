@@ -16,6 +16,9 @@ import { EditProduitComponent } from './pages/edit-produit/edit-produit.componen
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListeUtilisateurComponent } from './pages/liste-utilisateur/liste-utilisateur.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MajusculePipe } from './pipes/majuscule.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PanierComponent,
     Page404Component,
     EditProduitComponent,
+    ListeUtilisateurComponent,
+    MajusculePipe,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

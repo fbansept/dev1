@@ -1,17 +1,35 @@
 <form class="container" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
   <mat-form-field appearance="fill">
     <mat-label>Nom</mat-label>
-    <input matInput formControlName="nom"/>
+    <input matInput formControlName="nom" />
+    <mat-error>Le nom est obligatoire</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
     <textarea matInput formControlName="description"></textarea>
+    <mat-error *ngIf="formulaire.get('description')?.hasError('required')"
+      >La description est obligatoire</mat-error
+    >
+    <mat-error *ngIf="formulaire.get('description')?.hasError('minlength')">
+      Minimum 10 caractères (il manque
+      {{
+        formulaire.get("description")?.getError("minlength")?.requiredLength - 
+        formulaire.get("description")?.getError("minlength")?.actualLength
+      }}
+      caractère({{
+        (
+          formulaire.get("description")?.getError("minlength")?.requiredLength - 
+          formulaire.get("description")?.getError("minlength")?.actualLength
+        ) > 1 ? "s" : ""
+      }}))
+    </mat-error>
   </mat-form-field>
 
   <div class="action-buttons">
-      <button type="submit" mat-raised-button color="primary">Ajouter l'article</button>
-      <a routerLink="/" mat-raised-button color="warn">Annuler</a>
+    <button type="submit" mat-raised-button color="primary">
+      Ajouter l'article
+    </button>
+    <a routerLink="/" mat-raised-button color="warn">Annuler</a>
   </div>
-
 </form>

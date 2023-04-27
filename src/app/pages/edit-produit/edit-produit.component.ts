@@ -7,15 +7,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-produit.component.scss'],
 })
 export class EditProduitComponent {
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   formulaire: FormGroup = this.formBuilder.group({
-    nom : ["",[Validators.required]],
-    description: ["",[Validators.required, Validators.minLength(10)]]
-  })
+    nom: ['', [Validators.required]],
+    description: ['', [Validators.required, Validators.minLength(10)]],
+  });
 
   onSubmit() {
-    console.log('Formulaire envoyé');
+    if (this.formulaire.valid) {
+      console.log(this.formulaire.value);
+    }
   }
 }
