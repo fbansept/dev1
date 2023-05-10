@@ -28,9 +28,6 @@ export class ConnexionComponent {
         .post(
           'http://localhost/backend-angular/connexion.php',
           this.formulaire.value,
-          {
-            responseType: 'text'
-          }
         )
         .subscribe((reponse) => console.log(reponse));
 
