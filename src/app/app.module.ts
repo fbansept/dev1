@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListeUtilisateurComponent } from './pages/liste-utilisateur/liste-utilisateur.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MajusculePipe } from './pipes/majuscule.pipe';
+import { ConnexionComponent } from './pages/connexion/connexion.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MajusculePipe } from './pipes/majuscule.pipe';
     EditProduitComponent,
     ListeUtilisateurComponent,
     MajusculePipe,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,

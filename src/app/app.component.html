@@ -15,14 +15,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            aria-current="page"
-            routerLink="/accueil"
+          <a class="nav-link" routerLinkActive="active" routerLink="/accueil"
             >Accueil</a
           >
         </li>
+
+        <li *ngIf="!auth.connecte; else deconnexion" class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/connexion">
+            Connexion
+          </a>
+        </li>
+
+        <ng-template #deconnexion>
+          <li>
+            <a class="nav-link">
+              Déconnexion
+            </a>
+          </li>
+        </ng-template>
+
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/panier">
             <mat-icon fontIcon="shopping_cart"></mat-icon>
