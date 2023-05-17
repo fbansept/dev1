@@ -10,6 +10,7 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent },
   { path: 'panier', component: PanierComponent },
+  { path: 'edit-produit/:id', component: EditProduitComponent },
   { path: 'edit-produit', component: EditProduitComponent },
   { path: 'liste-utilisateur', component: ListeUtilisateurComponent },
   { path: 'connexion', component: ConnexionComponent },

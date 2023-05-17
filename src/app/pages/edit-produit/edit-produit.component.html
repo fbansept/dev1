@@ -6,21 +6,21 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea matInput formControlName="description"></textarea>
-    <mat-error *ngIf="formulaire.get('description')?.hasError('required')"
-      >La description est obligatoire</mat-error
+    <mat-label>Contenu</mat-label>
+    <textarea matInput formControlName="contenu"></textarea>
+    <mat-error *ngIf="formulaire.get('contenu')?.hasError('required')"
+      >Le contenu est obligatoire</mat-error
     >
-    <mat-error *ngIf="formulaire.get('description')?.hasError('minlength')">
+    <mat-error *ngIf="formulaire.get('contenu')?.hasError('minlength')">
       Minimum 10 caractères (il manque
       {{
-        formulaire.get("description")?.getError("minlength")?.requiredLength - 
-        formulaire.get("description")?.getError("minlength")?.actualLength
+        formulaire.get("contenu")?.getError("minlength")?.requiredLength - 
+        formulaire.get("contenu")?.getError("minlength")?.actualLength
       }}
       caractère({{
         (
-          formulaire.get("description")?.getError("minlength")?.requiredLength - 
-          formulaire.get("description")?.getError("minlength")?.actualLength
+          formulaire.get("contenu")?.getError("minlength")?.requiredLength - 
+          formulaire.get("contenu")?.getError("minlength")?.actualLength
         ) > 1 ? "s" : ""
       }}))
     </mat-error>
