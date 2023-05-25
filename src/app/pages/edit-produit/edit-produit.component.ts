@@ -10,14 +10,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditProduitComponent {
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute
   ) {
-
-    this.route.params.subscribe(parametres => console.log(parametres))
-
+    this.route.params.subscribe((parametres) => {
+      if (parametres['id']) {
+        this.http
+          .get(
+            'http://localhost/backend-angular/article.php?id=' +
+              parametres['id']
+          )
+          .subscribe((article) => this.formulaire.patchValue(article));
+      }
+    });
   }
 
   formulaire: FormGroup = this.formBuilder.group({
@@ -27,12 +34,17 @@ export class EditProduitComponent {
 
   onSubmit() {
     if (this.formulaire.valid) {
+      const jwt = localStorage.getItem('jwt');
 
-      this.http.post(
-        'http://localhost/backend-angular/ajout-article.php',
-        this.formulaire.value
-      ).subscribe(reponse => this.router.navigateByUrl("/accueil"));
-
+      if (jwt != null) {
+        this.http
+          .post(
+            'http://localhost/backend-angular/ajout-article.php',
+            this.formulaire.value,
+            { headers: { Authorization: jwt } }
+          )
+          .subscribe((reponse) => this.router.navigateByUrl('/accueil'));
+      }
     }
   }
 }
