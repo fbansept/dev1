@@ -9,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-produit.component.scss'],
 })
 export class EditProduitComponent {
+
+  idArticle = null;
+
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -16,6 +19,9 @@ export class EditProduitComponent {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((parametres) => {
+
+      this.idArticle = parametres['id'];
+
       if (parametres['id']) {
         this.http
           .get(
@@ -35,12 +41,16 @@ export class EditProduitComponent {
   onSubmit() {
     if (this.formulaire.valid) {
       const jwt = localStorage.getItem('jwt');
+      const article = this.formulaire.value;
+      article.id = this.idArticle;
 
       if (jwt != null) {
         this.http
           .post(
-            'http://localhost/backend-angular/ajout-article.php',
-            this.formulaire.value,
+            'http://localhost/backend-angular/' 
+              + (this.idArticle == null ? 'ajout-article' : 'modifier-article') 
+              + '.php',
+            article,
             { headers: { Authorization: jwt } }
           )
           .subscribe((reponse) => this.router.navigateByUrl('/accueil'));
