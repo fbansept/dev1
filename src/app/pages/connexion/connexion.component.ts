@@ -29,7 +29,11 @@ export class ConnexionComponent {
           'http://localhost/backend-angular/connexion.php',
           this.formulaire.value,
         )
-        .subscribe((reponse: any) => localStorage.setItem("jwt",reponse.jwt));
+        .subscribe((reponse: any) => {
+          if(reponse.jwt) {
+            localStorage.setItem("jwt",reponse.jwt)
+          }
+        });
 
       this.auth.connecte = true;
       this.router.navigateByUrl('/accueil');

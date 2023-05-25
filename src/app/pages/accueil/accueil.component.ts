@@ -22,10 +22,17 @@ export class AccueilComponent {
   }
 
   onSuppressionArticle(id: number) {
-    this.http
-      .delete(
-        'http://localhost/backend-angular/suppression-article.php?id=' + id
-      )
-      .subscribe((reponse) => this.raffraichir());
+
+    const jwt = localStorage.getItem('jwt');
+
+    if(jwt != null) {
+
+      this.http
+        .delete(
+          'http://localhost/backend-angular/suppression-article.php?id=' + id,
+          {headers : {Authorization : jwt}}
+        )
+        .subscribe((reponse) => this.raffraichir());
+    }
   }
 }
