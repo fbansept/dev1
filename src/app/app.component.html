@@ -20,7 +20,7 @@
           >
         </li>
 
-        <li *ngIf="!auth.connecte; else deconnexion" class="nav-item">
+        <li *ngIf="auth.utilisateur == null; else deconnexion" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/connexion">
             Connexion
           </a>
@@ -28,7 +28,7 @@
 
         <ng-template #deconnexion>
           <li class="nav-item">
-            <a class="nav-link" (click)="onDeconnexion()">
+            <a class="nav-link btn" (click)="onDeconnexion()">
               Déconnexion
             </a>
           </li>

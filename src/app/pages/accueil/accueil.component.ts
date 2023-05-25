@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-accueil',
@@ -11,7 +12,7 @@ export class AccueilComponent {
 
   listeArticle: any[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public auth: AuthentificationService) {
     this.raffraichir();
   }
 

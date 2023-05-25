@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(public auth: AuthentificationService, private router: Router) {}
 
   onDeconnexion() {
-    this.auth.connecte = false;
+    this.auth.deconnexion()
     this.router.navigateByUrl('/connexion');
   }
 }

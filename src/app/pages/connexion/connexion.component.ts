@@ -27,15 +27,14 @@ export class ConnexionComponent {
       this.http
         .post(
           'http://localhost/backend-angular/connexion.php',
-          this.formulaire.value,
+          this.formulaire.value
         )
         .subscribe((reponse: any) => {
-          if(reponse.jwt) {
-            localStorage.setItem("jwt",reponse.jwt)
+          if (reponse.jwt) {
+            this.auth.connexion(reponse.jwt);
           }
         });
 
-      this.auth.connecte = true;
       this.router.navigateByUrl('/accueil');
     }
   }

@@ -1,5 +1,5 @@
 <div class="container">
-  <a mat-raised-button *ngIf="isAdmin" routerLink="/edit-produit">
+  <a mat-raised-button *ngIf="auth.utilisateur != null" routerLink="/edit-produit">
     <mat-icon fontIcon="add"></mat-icon>
     Ajouter un article
   </a>
@@ -25,11 +25,11 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-button color="primary">Acheter</button>
-          <button *ngIf="isAdmin" [routerLink]="['/edit-produit',article.id]" mat-button color="accent">
+          <button *ngIf="auth.utilisateur?.admin == 1" [routerLink]="['/edit-produit',article.id]" mat-button color="accent">
             <mat-icon fontIcon="edit"></mat-icon>
             Modifier
           </button>
-          <button *ngIf="isAdmin" (click)="onSuppressionArticle(article.id)" mat-button color="warn">
+          <button *ngIf="auth.utilisateur?.admin == 1" (click)="onSuppressionArticle(article.id)" mat-button color="warn">
             <mat-icon fontIcon="delete"></mat-icon>
             Supprimer
           </button>
