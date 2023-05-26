@@ -9,7 +9,7 @@
       <mat-card class="mt-3" [class.promotion]="article.promotion > 0">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{ article.nom }}</mat-card-title>
+          <mat-card-title>{{ article.nom }} <span class="chips">{{article.nom_categorie}}</span></mat-card-title>
           <mat-card-subtitle>
             <span class="prix">{{ article.prix }}€</span>
             <span *ngIf="article.promotion > 0" class="prix-promo">

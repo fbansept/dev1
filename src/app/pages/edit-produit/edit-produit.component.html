@@ -14,16 +14,29 @@
     <mat-error *ngIf="formulaire.get('contenu')?.hasError('minlength')">
       Minimum 10 caractères (il manque
       {{
-        formulaire.get("contenu")?.getError("minlength")?.requiredLength - 
-        formulaire.get("contenu")?.getError("minlength")?.actualLength
+        formulaire.get("contenu")?.getError("minlength")?.requiredLength -
+          formulaire.get("contenu")?.getError("minlength")?.actualLength
       }}
       caractère({{
-        (
-          formulaire.get("contenu")?.getError("minlength")?.requiredLength - 
-          formulaire.get("contenu")?.getError("minlength")?.actualLength
-        ) > 1 ? "s" : ""
+        formulaire.get("contenu")?.getError("minlength")?.requiredLength -
+          formulaire.get("contenu")?.getError("minlength")?.actualLength >
+        1
+          ? "s"
+          : ""
       }}))
     </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Catégorie</mat-label>
+    <mat-select formControlName="id_categorie">
+      <mat-option
+        *ngFor="let categorie of listeCategorie"
+        [value]="categorie.id"
+      >
+        {{ categorie.nom }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <div class="action-buttons">
